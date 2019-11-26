@@ -1,3 +1,7 @@
+/**
+ * @author Amarit Jarasjindarat <amarit.jarasjindarat@gmail.com>
+ */
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './modules/app/app.module';
 

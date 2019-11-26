@@ -1,5 +1,9 @@
+/**
+ * @author Amarit Jarasjindarat <amarit.jarasjindarat@gmail.com>
+ */
+
 import { Injectable } from '@nestjs/common';
-import { ReadAppDto } from './dto/read-app.dto';
+import { ReadAppDTO } from './dto/read-app.dto';
 import { EnumApp } from './dto/enum.app';
 
 @Injectable()
@@ -8,8 +12,8 @@ export class AppService {
   /**
    * Assemble a dto read app
    */
-  private assembleReadAppDto(): ReadAppDto {
-    const radto = new ReadAppDto();
+  private assembleReadAppDTO(): ReadAppDTO {
+    const radto = new ReadAppDTO();
     radto.name = 'Online store';
     radto.type = EnumApp.OnlineStore;
     radto.description = 'P2 Online store';
@@ -20,7 +24,7 @@ export class AppService {
   /**
    * return a ReadAppDto object
    */
-  getApp(): ReadAppDto {
-    return this.assembleReadAppDto();
+  getApp(): ReadAppDTO {
+    return this.assembleReadAppDTO();
   }
 }

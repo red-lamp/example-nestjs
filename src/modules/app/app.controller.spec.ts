@@ -1,6 +1,11 @@
+/**
+ * @author Amarit Jarasjindarat <amarit.jarasjindarat@gmail.com>
+ */
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ReadAppDTO } from './dto/read-app.dto';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -15,8 +20,9 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return object is instance of "ReadAppDTO!"', () => {
+      const readAppDTO = appController.getApp();
+      expect(readAppDTO).toBeInstanceOf(ReadAppDTO);
     });
   });
 });
