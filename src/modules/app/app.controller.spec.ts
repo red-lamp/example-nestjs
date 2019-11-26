@@ -7,6 +7,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ReadAppDTO } from './dto/read-app.dto';
 
+/**
+ * Initiate AppController testing
+ */
 describe('AppController', () => {
   let appController: AppController;
 

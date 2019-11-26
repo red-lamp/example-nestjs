@@ -15,6 +15,7 @@ export class AppController {
    */
   @Get()
   getApp(): ReadAppDTO {
+    const readAppDTO = this.appService.getApp();
     return this.appService.getApp();
   }
 }
