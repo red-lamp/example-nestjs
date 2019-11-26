@@ -10,6 +10,9 @@ import { ReadAppDTO } from './dto/read-app.dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  /**
+   * Router GET, POST, PUT, DELETE
+   */
   @Get()
   getApp(): ReadAppDTO {
     return this.appService.getApp();

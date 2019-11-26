@@ -22,7 +22,7 @@ export class AppService {
   }
 
   /**
-   * return a ReadAppDto object
+   * Return a ReadAppDto object
    */
   getApp(): ReadAppDTO {
     return this.assembleReadAppDTO();

@@ -19,6 +19,7 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
+  // Describe return object is ReadAppDTO
   describe('root', () => {
     it('should return object is instance of "ReadAppDTO!"', () => {
       const readAppDTO = appController.getApp();
