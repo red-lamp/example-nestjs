@@ -5,7 +5,7 @@
 import { Injectable } from '@nestjs/common';
 import { ReadAppDTO } from './dto/read-app.dto';
 import { EnumApp } from './dto/enum.app';
-import { TeamMember } from '../team/dto/team-member';
+import { TeamMemberDTO } from '../team/dto/team-member.dto';
 import { CreateAppDTO } from './dto/create-app.dto';
 import { MessageDTO } from '../share/dto/message.dto';
 import { EnumStatusCode, EnumMessage } from '../share/dto/enum.message';
@@ -32,7 +32,7 @@ export class AppService {
    */
   getApp(): ReadAppDTO {
     // mock a teamMember object
-    const teamMember = new TeamMember();
+    const teamMember = new TeamMemberDTO();
     teamMember.age = 28;
     teamMember.name = 'Pond';
     teamMember.position = 'Lead innovation developer';
@@ -65,7 +65,7 @@ export class AppService {
    */
   putApp(createAppDTO: CreateAppDTO): ReadAppDTO {
     // mock a teamMember object
-    const teamMember = new TeamMember();
+    const teamMember = new TeamMemberDTO();
     teamMember.age = 25;
     teamMember.name = 'Foam';
     teamMember.position = 'Associate innovation developer';
