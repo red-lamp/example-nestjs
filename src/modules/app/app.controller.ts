@@ -15,22 +15,22 @@ export class AppController {
   /**
    * Router GET, POST, PUT, DELETE
    */
-  @Get()
+  @Get('platform')
   getApp(): ReadAppDTO {
     return this.appService.getApp();
   }
 
-  @Post()
+  @Post('platform')
   postApp(@Body() readAppDTO: ReadAppDTO): ReadAppDTO {
     return this.appService.postApp(readAppDTO);
   }
 
-  @Put()
+  @Put('platform')
   putApp(@Body() createAppDTO: CreateAppDTO): ReadAppDTO {
     return this.appService.putApp(createAppDTO);
   }
 
-  @Delete()
+  @Delete('platform')
   deleteApp(@Body() readAppDTO: ReadAppDTO): MessageDTO {
     return this.appService.deleteApp(readAppDTO);
   }

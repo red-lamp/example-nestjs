@@ -13,7 +13,7 @@ export class TeamController {
   /**
    * Router GET, POST, PUT, DELETE
    */
-  @Get()
+  @Get('team')
   getTeamMember(): TeamMemberDTO {
     return this.teamService.getTeamMember();
   }
