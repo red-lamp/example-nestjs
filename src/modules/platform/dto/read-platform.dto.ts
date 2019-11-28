@@ -7,7 +7,7 @@ import { TeamMemberDTO } from '../../team/dto/team-member.dto';
  /**
   * App data transfer object
   */
-export class ReadAppDTO {
+export class ReadPlatformDTO {
   id: string;
   name: string;
   type: number;

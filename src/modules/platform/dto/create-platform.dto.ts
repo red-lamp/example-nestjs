@@ -3,9 +3,9 @@
  */
 
  /**
-  * App data transfer object
+  * Platform data transfer object
   */
-export class CreateAppDTO {
+export class CreatePlatformDTO {
     readonly name: string;
     readonly type: number;
     readonly description: string;

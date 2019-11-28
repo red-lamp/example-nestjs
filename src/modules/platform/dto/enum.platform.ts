@@ -3,9 +3,9 @@
  */
 
  /**
-  * Enum of Apps
+  * Enum of Platforms
   */
-export enum EnumApp {
+export enum EnumPlatform {
     Home = 1,
     OnlineStore = 2,
     FMS = 3,
