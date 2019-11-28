@@ -9,10 +9,16 @@ import { TeamMemberDTO } from '../team/dto/team-member.dto';
 import { CreatePlatformDTO } from './dto/create-platform.dto';
 import { MessageDTO } from '../share/dto/message.dto';
 import { EnumStatusCode, EnumMessage } from '../share/dto/enum.message';
+import { TeamService } from '../team/team.service';
 
 @Injectable()
 export class PlatformService {
 
+  teamService: TeamService;
+
+  constructor() {
+    this.teamService = new TeamService();
+  }
   /**
    * Assemble a dto read platform
    */
@@ -32,11 +38,7 @@ export class PlatformService {
    */
   getPlatform(): ReadPlatformDTO {
     // mock a teamMember object
-    const teamMember = new TeamMemberDTO();
-    teamMember.age = 28;
-    teamMember.name = 'Pond';
-    teamMember.position = 'Lead innovation developer';
-    teamMember.gender = 'male';
+    const teamMember = this.teamService.getTeamMember('pond');
 
     const readPlatformDTO = this.assembleReadPlatformDTO();
     readPlatformDTO.teamMember = [teamMember];
@@ -65,11 +67,7 @@ export class PlatformService {
    */
   putPlatform(createPlatformDTO: CreatePlatformDTO): ReadPlatformDTO {
     // mock a teamMember object
-    const teamMember = new TeamMemberDTO();
-    teamMember.age = 25;
-    teamMember.name = 'Foam';
-    teamMember.position = 'Associate innovation developer';
-    teamMember.gender = 'male';
+    const teamMember = this.teamService.getTeamMember('foam');
 
     const readPlatformDTO = this.assembleReadPlatformDTO();
     readPlatformDTO.name = createPlatformDTO.name;

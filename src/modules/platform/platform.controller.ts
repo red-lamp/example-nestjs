@@ -8,29 +8,29 @@ import { ReadPlatformDTO } from './dto/read-platform.dto';
 import { CreatePlatformDTO } from './dto/create-platform.dto';
 import { MessageDTO } from '../share/dto/message.dto';
 
-@Controller()
+@Controller('platform')
 export class PlatformController {
   constructor(private readonly platformService: PlatformService) {}
 
   /**
    * Router GET, POST, PUT, DELETE
    */
-  @Get('platform')
+  @Get()
   getPlatform(): ReadPlatformDTO {
     return this.platformService.getPlatform();
   }
 
-  @Post('platform')
+  @Post()
   postPlatform(@Body() readPlatformDTO: ReadPlatformDTO): ReadPlatformDTO {
     return this.platformService.postPlatform(readPlatformDTO);
   }
 
-  @Put('platform')
+  @Put()
   putPlatform(@Body() createPlatformDTO: CreatePlatformDTO): ReadPlatformDTO {
     return this.platformService.putPlatform(createPlatformDTO);
   }
 
-  @Delete('platform')
+  @Delete()
   deletePlatform(@Body() readPlatformDTO: ReadPlatformDTO): MessageDTO {
     return this.platformService.deletePlatform(readPlatformDTO);
   }

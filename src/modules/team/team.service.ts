@@ -11,14 +11,38 @@ export class TeamService {
   /**
    * Return a TeamMember object
    */
-  getTeamMember(): TeamMemberDTO {
+  getTeamMember(who: string): TeamMemberDTO {
     // mock a teamMember object
-    const teamMember = new TeamMemberDTO();
-    teamMember.age = 38;
-    teamMember.name = 'Tony William';
-    teamMember.position = 'Head of development';
-    teamMember.gender = 'male';
+    switch (who) {
+      case 'tony': {
+        const teamMember = new TeamMemberDTO();
+        teamMember.age = 38;
+        teamMember.name = 'Tony William';
+        teamMember.position = 'Head of development';
+        teamMember.gender = 'male';
 
-    return teamMember;
+        return teamMember;
+      }
+      case 'pond': {
+        const teamMember = new TeamMemberDTO();
+        teamMember.age = 28;
+        teamMember.name = 'Pond';
+        teamMember.position = 'Lead innovation developer';
+        teamMember.gender = 'male';
+
+        return teamMember;
+      }
+      case 'foam': {
+        const teamMember = new TeamMemberDTO();
+        teamMember.age = 25;
+        teamMember.name = 'Foam';
+        teamMember.position = 'Associate innovation developer';
+        teamMember.gender = 'male';
+
+        return teamMember;
+      }
+      default:
+        return new TeamMemberDTO();
+    }
   }
 }
