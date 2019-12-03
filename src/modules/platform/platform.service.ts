@@ -5,7 +5,6 @@
 import { Injectable } from '@nestjs/common';
 import { ReadPlatformDTO } from './dto/read-platform.dto';
 import { EnumPlatform } from './dto/enum.platform';
-import { TeamMemberDTO } from '../team/dto/team-member.dto';
 import { CreatePlatformDTO } from './dto/create-platform.dto';
 import { MessageDTO } from '../share/dto/message.dto';
 import { EnumStatusCode, EnumMessage } from '../share/dto/enum.message';

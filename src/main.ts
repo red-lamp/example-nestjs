@@ -11,6 +11,8 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import { Transport } from '@nestjs/common/enums/transport.enum';
+import { join } from 'path';
 
 @Module({
   imports: [PlatformModule, TeamModule],
@@ -26,6 +28,12 @@ async function bootstrap() {
   // const app = await NestFactory.create(Mod);
   // await app.listen(3000);
 
+  const microservicesApp = await NestFactory.createMicroservice(Modules, {
+    transport: Transport.TCP,
+  });
+
+  microservicesApp.listen(() => process.stdout.write('Microservice is listening'));
+
   const app = await NestFactory.create<NestFastifyApplication>(
     Modules, new FastifyAdapter({ logger: true }),
   );
@@ -33,6 +41,6 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors();
 
-  await app.listen(3000);
+  await app.listen(5000);
 }
 bootstrap();
