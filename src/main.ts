@@ -15,15 +15,17 @@ import { AppServices } from './app.service';
  * Bootstrap function, use for assemble modules
  */
 async function bootstrap() {
-  // const app = await NestFactory.create(Mod);
-  // await app.listen(3000);
-
-  const microservicesApp = await NestFactory.createMicroservice(AppServices, {
+  // create a microservices
+  const microApp = await NestFactory.create(AppServices);
+  microApp.connectMicroservice({
     transport: Transport.TCP,
+    options: { retryAttempts: 5, retryDelay: 3000 },
   });
 
-  microservicesApp.listen(() => process.stdout.write('Microservice is listening'));
+  await microApp.startAllMicroservicesAsync();
+  await microApp.listen(3001);
 
+  // create a service
   const app = await NestFactory.create<NestFastifyApplication>(
     AppServices, new FastifyAdapter({ logger: true }),
   );
