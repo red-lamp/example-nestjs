@@ -16,3 +16,10 @@ export enum EnumStatusCode {
 export enum EnumMessage {
   HAS_BEEN_DEL = 'has been deleted',
 }
+
+ /**
+  * Enum of Microservices
+  */
+export enum EnumService {
+  PLATFORM_SERVICE = 'platform_service',
+}

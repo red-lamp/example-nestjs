@@ -2,22 +2,31 @@
  * @author Amarit Jarasjindarat <amarit.jarasjindarat@gmail.com>
  */
 
-import { Controller, Get, Post, Delete, Put, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Put, Body, Inject } from '@nestjs/common';
+import { ClientProxy, MessagePattern } from '@nestjs/microservices';
 import { PlatformService } from './platform.service';
 import { ReadPlatformDTO } from './dto/read-platform.dto';
 import { CreatePlatformDTO } from './dto/create-platform.dto';
 import { MessageDTO } from '../share/dto/message.dto';
+import { EnumService } from '../share/dto/enum.message';
+import { Observable } from 'rxjs';
+import { ReadPricingDTO } from 'src/modules.engagement/pricing/dto/read-pricing.dto';
 
 @Controller('platform')
 export class PlatformController {
-  constructor(private readonly platformService: PlatformService) {}
+  constructor(private readonly platformService: PlatformService,
+              @Inject(EnumService.PLATFORM_SERVICE) private readonly client: ClientProxy) {}
 
   /**
    * Router GET, POST, PUT, DELETE
    */
   @Get()
-  getPlatform(): ReadPlatformDTO {
-    return this.platformService.getPlatform();
+  async getPlatform(): Promise<ReadPlatformDTO> {
+    const platformDTO = this.platformService.getPlatform();
+    const pricingDTO = await this.client.send<ReadPricingDTO>({ cmd: 'pricing' }, platformDTO.id).toPromise();
+    platformDTO.pricing = pricingDTO;
+
+    return platformDTO;
   }
 
   @Post()

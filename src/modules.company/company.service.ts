@@ -12,4 +12,4 @@ import { TeamModule } from './team/team.module';
     providers: [],
   })
 
- export class PlatformServices {}
+ export class CompanyServices {}

@@ -2,22 +2,28 @@
  * @author Amarit Jarasjindarat <amarit.jarasjindarat@gmail.com>
  */
 
-import { Controller, Get, Post, Delete, Put, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Put, Body, Inject } from '@nestjs/common';
 import { PricingService } from './pricing.service';
 import { ReadPricingDTO } from './dto/read-pricing.dto';
 import { CreatePricingDTO } from './dto/create-pricing.dto';
 import { MessageDTO } from '../share/dto/message.dto';
+import { MessagePattern, ClientProxy } from '@nestjs/microservices';
+import { EnumService } from 'src/modules.company/share/dto/enum.message';
 
 @Controller('pricing')
 export class PricingController {
-  constructor(private readonly pricingService: PricingService) {}
+  constructor(private readonly pricingService: PricingService,
+              @Inject(EnumService.PLATFORM_SERVICE) private readonly client: ClientProxy) {}
 
   /**
    * Router GET, POST, PUT, DELETE
    */
+  @MessagePattern({ cmd: 'pricing' })
   @Get()
-  getPricing(): ReadPricingDTO {
-    return this.pricingService.getPricing();
+  getPricing(platformId): ReadPricingDTO {
+    const pricingDTO = this.pricingService.getPricing();
+    pricingDTO.platformId = platformId;
+    return pricingDTO;
   }
 
   @Post()

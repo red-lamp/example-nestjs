@@ -4,10 +4,10 @@
 
 import { Module } from '@nestjs/common';
 import { EngagementServices } from './modules.engagement/engagement.service';
-import { PlatformServices } from './modules.platform/platform.service';
+import { CompanyServices } from './modules.company/company.service';
 
 @Module({
-    imports: [EngagementServices, PlatformServices],
+    imports: [EngagementServices, CompanyServices],
     controllers: [],
     providers: [],
   })
