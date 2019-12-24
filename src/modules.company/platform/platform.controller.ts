@@ -9,7 +9,6 @@ import { ReadPlatformDTO } from './dto/read-platform.dto';
 import { CreatePlatformDTO } from './dto/create-platform.dto';
 import { MessageDTO } from '../share/dto/message.dto';
 import { EnumService } from '../share/dto/enum.message';
-import { Observable } from 'rxjs';
 import { ReadPricingDTO } from 'src/modules.engagement/pricing/dto/read-pricing.dto';
 
 @Controller('platform')

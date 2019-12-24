@@ -12,8 +12,7 @@ import { EnumService } from 'src/modules.company/share/dto/enum.message';
 
 @Controller('pricing')
 export class PricingController {
-  constructor(private readonly pricingService: PricingService,
-              @Inject(EnumService.PLATFORM_SERVICE) private readonly client: ClientProxy) {}
+  constructor(private readonly pricingService: PricingService) {}
 
   /**
    * Router GET, POST, PUT, DELETE
