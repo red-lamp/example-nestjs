@@ -22,6 +22,7 @@ export class PlatformController {
   @Get()
   async getPlatform(): Promise<ReadPlatformDTO> {
     const platformDTO = this.platformService.getPlatform();
+    // send TCP request to prcing module
     const pricingDTO = await this.client.send<ReadPricingDTO>({ cmd: 'pricing' }, platformDTO.id).toPromise();
     platformDTO.pricing = pricingDTO;
 

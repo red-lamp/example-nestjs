@@ -22,6 +22,7 @@ export class PricingController {
   getPricing(platformId): ReadPricingDTO {
     const pricingDTO = this.pricingService.getPricing();
     pricingDTO.platformId = platformId;
+
     return pricingDTO;
   }
 
