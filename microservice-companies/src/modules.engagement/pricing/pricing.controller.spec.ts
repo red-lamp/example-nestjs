@@ -25,7 +25,7 @@ describe('PricingController', () => {
   // Describe return object is ReadPricingDTO
   describe('root', () => {
     it('should return object is instance of "ReadPricingDTO!"', () => {
-      const readPricingDTO = pricingController.getPricing();
+      const readPricingDTO = pricingController.getPricing(1);
       expect(readPricingDTO).toBeInstanceOf(ReadPricingDTO);
     });
   });

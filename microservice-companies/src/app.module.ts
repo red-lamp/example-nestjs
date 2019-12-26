@@ -3,10 +3,11 @@
  */
 
 import { Module } from '@nestjs/common';
-import { AuctionModules } from './modules.auction/auction.module';
+import { EngagementModules } from './modules.engagement/engagement.module';
+import { CompanyModules } from './modules.company/company.module';
 
 @Module({
-    imports: [AuctionModules],
+    imports: [EngagementModules, CompanyModules],
     controllers: [],
     providers: [],
   })

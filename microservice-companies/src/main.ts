@@ -9,14 +9,14 @@ import {
 } from '@nestjs/platform-fastify';
 import { Transport } from '@nestjs/common/enums/transport.enum';
 
-import { AppServices } from './app.service';
+import { AppModules } from './app.module';
 
 /**
  * Bootstrap function, use for assemble modules
  */
 async function bootstrap() {
   // create a microservices
-  const microApp = await NestFactory.create(AppServices);
+  const microApp = await NestFactory.create(AppModules);
   microApp.connectMicroservice({
     transport: Transport.TCP,
     options: { retryAttempts: 5, retryDelay: 3000 },
@@ -27,7 +27,7 @@ async function bootstrap() {
 
   // create a service
   const app = await NestFactory.create<NestFastifyApplication>(
-    AppServices, new FastifyAdapter({ logger: true }),
+    AppModules, new FastifyAdapter({ logger: true }),
   );
 
   // Enable CORS

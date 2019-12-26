@@ -11,4 +11,4 @@ import { PricingModule } from './pricing/pricing.module';
     providers: [],
   })
 
- export class EngagementServices {}
+ export class EngagementModules {}

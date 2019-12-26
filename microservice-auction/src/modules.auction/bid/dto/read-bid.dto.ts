@@ -5,9 +5,7 @@
  /**
   * App data transfer object
   */
-export class ReadPricingDTO {
+export class ReadBidDTO {
   id: string;
-  platformId: string;
-  teamMemberId: string;
-  pricePerManday: number;
+  bidPrice: number;
 }

@@ -3,12 +3,12 @@
  */
 
 import { Module } from '@nestjs/common';
-import { AuctionModules } from './modules.auction/auction.module';
+import { BidModule } from './bid/bid.module';
 
 @Module({
-    imports: [AuctionModules],
+    imports: [BidModule],
     controllers: [],
     providers: [],
   })
 
- export class AppModules {}
+ export class AuctionModules {}
