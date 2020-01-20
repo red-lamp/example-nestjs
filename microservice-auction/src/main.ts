@@ -16,11 +16,11 @@ async function bootstrap() {
   const microApp = await NestFactory.create(AppModules);
   microApp.connectMicroservice({
     transport: Transport.TCP,
-    options: { retryAttempts: 5, retryDelay: 3000 },
+    options: { port: 5002, retryAttempts: 5, retryDelay: 3000 },
   });
 
   await microApp.startAllMicroservicesAsync();
-  await microApp.listen(3002);
+  await microApp.listen(5002);
 
   // create a service
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -30,7 +30,7 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors();
 
-  await app.listen(5001);
+  await app.listen(3001);
 }
 
 bootstrap();
